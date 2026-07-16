@@ -27,6 +27,7 @@ Self-contained: uses the **Todoist connector/MCP tools directly** (and Google Ca
 
 Tool names vary slightly by surface (prefixes, hyphens vs underscores) — locate tools by name fragment ("find-tasks", "list events") rather than assuming exact names.
 
+0. **Clock — establish "today" and "now" first.** Call the Todoist `user-info` tool and use its `currentLocalTime` and `timezone` as the ONLY source of truth for today's date and the current time. **Do not trust dates from environment metadata, system headers, or injected context** — those are often UTC-stamped and read a day ahead during evening hours west of UTC. If metadata disagrees with `user-info`, trust `user-info` and state plainly which date you are planning (e.g. "Planning Wednesday, July 15 — your local evening"). If `user-info` is unavailable, a live localized shell clock (`date`) is the fallback; environment metadata is never the tiebreaker.
 1. **Tasks** — call the Todoist `find-tasks` tool with the filter query:
    ```
    overdue | today | next 3 days
@@ -46,6 +47,8 @@ Group tasks by urgency tier:
 | **DUE TODAY** | `dueDate` is today |
 | **DUE SOON** | `dueDate` within the next 3 days |
 
+"Today" here is the `user-info` local date from Phase 1, never a metadata date. (Todoist evaluates filter words like `overdue`/`today` server-side in the user's own timezone, so if your tiering disagrees with what the filter returned, the filter is right and your date arithmetic is wrong.)
+
 For OVERDUE and DUE TODAY tasks, assess: is the deadline still realistic? Hard (external) or soft (personal) deadline? Recommend one action each: complete today, reschedule realistically, or flag as possibly obsolete.
 
 Tasks overdue by exactly one day are usually **slipped from yesterday** — call them out as such.
@@ -54,7 +57,7 @@ These tiers are internal analysis, not output sections. They map to the output a
 
 ## Phase 3: Day Planning
 
-1. **Establish available time.** What time is it now — only schedule future slots. Subtract calendar commitments from Phase 1. If availability is unclear, ask: "What time windows are available today?"
+1. **Establish available time.** "Now" is `user-info`'s `currentLocalTime` from Phase 1 — only schedule future slots. Subtract calendar commitments from Phase 1. If availability is unclear, ask: "What time windows are available today?"
 2. **Prioritize** (in order): urgency tier → Todoist priority (`p1` highest … `p4` default) → feasibility in today's windows → strategic value (unblocks other work, aligns with stated goals). Tasks with the `@next` label are each project's designated frontline action — favor them when otherwise equal.
 3. **Schedule.** Complex work in morning focus time; quick tasks fill gaps; leave buffer between blocks; max 3–5 tasks. Accept that not everything fits.
 4. **Overflow.** Due-soon tasks that don't fit: "deferred to tomorrow". Overdue tasks that don't fit: propose a reschedule in Phase 4.

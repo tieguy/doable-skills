@@ -9,8 +9,13 @@ Packaged as a Claude plugin: works in Claude Code, claude.ai, Claude Desktop, an
 | Skill | Say | What it does |
 |---|---|---|
 | `morning-review` | "plan my day" | Time-blocked plan with TOP 3 priorities from overdue/today/due-soon tasks |
+| `end-of-day-review` | "wrap up my day" | Plan vs. reality, preliminary tomorrow priorities |
+| `weekly-hygiene` | "weekly review" | Phase 1: inbox clarify, overdue decisions, waiting follow-ups |
+| `weekly-analysis` | (after hygiene) | Phase 2: project health, area balance, Someday-Maybe triage |
+| `monthly-review` | "strategic review" | 30-day patterns, life-area balance, GTD system health |
+| `daily-next-maintenance` | (scheduled) | Enforces the `@next` invariant: ≤1 next action per active project |
 
-More reviews (end-of-day, weekly, monthly) will land here as they are ported to be connector-native.
+All skills are self-contained and connector-native (v2): clock from Todoist `user-info`, writes only with explicit confirmation, phone-compact output.
 
 ## Setup
 
