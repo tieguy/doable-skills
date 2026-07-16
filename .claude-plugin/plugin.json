@@ -1,0 +1,15 @@
+{
+    "name": "doable",
+    "description": "GTD review skills for doable task management. Weekly reviews, daily planning, deadline scanning, and project health analysis.",
+    "version": "0.4.0",
+    "author": {
+        "name": "Louie"
+    },
+    "license": "MIT",
+    "keywords": [
+        "gtd",
+        "productivity",
+        "task-management",
+        "weekly-review"
+    ]
+}

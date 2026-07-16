@@ -1,0 +1,20 @@
+{
+    "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+    "name": "doable",
+    "version": "0.4.0",
+    "description": "GTD review skills for doable task management",
+    "owner": {
+        "name": "Louie"
+    },
+    "plugins": [
+        {
+            "name": "doable",
+            "description": "GTD review skills for doable task management. Weekly reviews, daily planning, deadline scanning, and project health analysis.",
+            "version": "0.4.0",
+            "source": {
+                "source": "url",
+                "url": "https://github.com/tieguy/doable-skills.git"
+            }
+        }
+    ]
+}
