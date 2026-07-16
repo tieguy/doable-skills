@@ -29,4 +29,4 @@ Sub-skills in `skills/sub-skills/` are invoked by the orchestrators above.
 
 ## License
 
-MIT
+CC0 1.0 (public domain dedication)
