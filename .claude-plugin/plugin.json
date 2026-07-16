@@ -1,7 +1,7 @@
 {
     "name": "doable",
     "description": "GTD review skills for doable task management. Weekly reviews, daily planning, deadline scanning, and project health analysis.",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "author": {
         "name": "Louie"
     },

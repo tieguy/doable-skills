@@ -16,6 +16,8 @@ Self-contained: uses the **Todoist connector/MCP tools directly**. No CLI, no ot
 - Fetch dated tasks with `find-tasks` + a filter query. **Avoid `find-tasks-by-date`** — with `daysCount` > 1 it has silently dropped tasks actually due today. If it is the only such tool available, also run it with `daysCount=1` for today and treat that result as authoritative for anything dated today.
 - **Never pass an explicit `responsibleUser` ID** — it excludes unassigned tasks (i.e., most personal tasks). Leave it unset (default `unassignedOrMe`) or use `responsibleUserFiltering: "all"`.
 
+**Calendar caution:** call `list_events` with **explicit `startTime`/`endTime` bounds** (e.g. the past 7 days). With no bounds it has returned garbage — far-future recurring all-day events and none of the real ones in your window. Never infer "no events" from an unbounded call.
+
 **Announce at start:** "I'm using the weekly-hygiene skill for phase 1 of your weekly review — task cleanup."
 
 ## Phase 0: Clock
