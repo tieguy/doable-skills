@@ -12,6 +12,10 @@ Review today's accomplishments, propose task updates, and generate tomorrow's pr
 
 Self-contained: uses the **Todoist connector/MCP tools directly**. No CLI, no other skills, no filesystem. Tool names vary slightly by surface — locate tools by name fragment ("find-completed-tasks") rather than assuming exact names.
 
+**Todoist tool cautions (observed bugs):**
+- Fetch dated tasks with `find-tasks` + a filter query. **Avoid `find-tasks-by-date`** — with `daysCount` > 1 it has silently dropped tasks actually due today. If it is the only such tool available, also run it with `daysCount=1` for today and treat that result as authoritative for anything dated today.
+- **Never pass an explicit `responsibleUser` ID** — it excludes unassigned tasks (i.e., most personal tasks). Leave it unset (default `unassignedOrMe`) or use `responsibleUserFiltering: "all"`.
+
 **Announce at start:** "I'm using the end-of-day-review skill to wrap up your day."
 
 ## Phase 0: Clock
